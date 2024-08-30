@@ -11,9 +11,9 @@
     <item android:title="Publicar"
         android:icon="@drawable/baseline_add_24"
         android:id="@+id/add"/>
-    <item android:title="Notificações"
-        android:icon="@drawable/ic_notification"
-        android:id="@+id/notification"/>
+    <item android:title="Salvos"
+        android:icon="@drawable/outline_bookmarks_24"
+        android:id="@+id/salvos"/>
     <item android:title="Perfil"
         android:icon="@drawable/ic_person"
         android:id="@+id/profile"/>

@@ -7,10 +7,22 @@
 
     <style name="Theme.ReciclaMais" parent="Base.Theme.ReciclaMais">
         <item name="colorPrimary">@color/principal</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
 
     <style name="roundedImageView">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
+
+    <style name="Widget.App.BottomNavigationView" parent = "Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent = "">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/principal</item>
+    </style>
+
+
 </resources>
