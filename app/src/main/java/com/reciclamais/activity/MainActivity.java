@@ -75,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public int retornaUm(){
+        return 1;
+    }
+
 
 
 }
