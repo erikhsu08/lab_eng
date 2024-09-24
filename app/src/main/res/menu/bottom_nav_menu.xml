@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_search"
         android:id="@+id/search"/>
     <item android:title="Publicar"
-        android:icon="@drawable/baseline_add_24"
+        android:icon="@drawable/baseline_add_circle_24"
         android:id="@+id/add"/>
     <item android:title="Salvos"
         android:icon="@drawable/outline_bookmarks_24"

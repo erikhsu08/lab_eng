@@ -1,12 +1,17 @@
-import org.junit.jupiter.api.Test;
+package com.reciclamais;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.reciclamais.activity.MainActivity;
+
+import org.junit.jupiter.api.Test;
 
 public class MinhaClasseTest {
 
     @Test
     public void testRetornaUm() {
-        MinhaClasse MainActivity = new MinhaClasse();
-        int resultado = MainActivity.retornaUm();
+        MainActivity mainActivity = new MainActivity();
+        int resultado = mainActivity.retornaUm();
         assertEquals(1, resultado, "O método retornaUm deve retornar 1");
     }
 }
