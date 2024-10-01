@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "17990386340",
+    "project_id": "recicla-123",
+    "storage_bucket": "recicla-123.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17990386340:android:58749023e179efdf2f1c31",
+        "android_client_info": {
+          "package_name": "com.reciclamais"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSJkTKrZxOZQOL7H-JFBXBeALO1DyCWMk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

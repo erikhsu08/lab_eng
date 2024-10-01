@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Home"
-        android:icon="@drawable/ic_home"
+    <item
         android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"
         />
-    <item android:title="Pesquisar"
+    <item
+        android:id="@+id/search"
+        android:title="Pesquisar"
         android:icon="@drawable/ic_search"
-        android:id="@+id/search"/>
-    <item android:title="Publicar"
+        />
+    <item
+        android:id="@+id/publicar"
+        android:title="Publicar"
         android:icon="@drawable/baseline_add_circle_24"
-        android:id="@+id/add"/>
+        />
     <item android:title="Salvos"
         android:icon="@drawable/outline_bookmarks_24"
         android:id="@+id/salvos"/>
