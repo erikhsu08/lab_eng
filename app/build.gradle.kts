@@ -30,6 +30,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    testOptions{
+        unitTests.isIncludeAndroidResources = true
+        animationsDisabled = true
+    }
 }
 
 dependencies {
@@ -55,6 +59,7 @@ dependencies {
 
     // Outras dependências de testes
     testImplementation (libs.junit)
+
 
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
