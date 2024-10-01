@@ -29,7 +29,7 @@ public class FireBaseDatabaseTest {
 
     @Test
     public void adicionarProdutoAoFirebase() {
-        Produto produto = new Produto("Foguete", "Facil", R.drawable.foguete);
+        Produto produto = new Produto("Teste", "Facil", R.drawable.foguete);
         databaseReference.push().setValue(produto).addOnCompleteListener(task -> {
             assertTrue("Falha ao adicionar o produto ao Firebase", task.isSuccessful());
         });
