@@ -29,43 +29,45 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Start Firebase Emulators
+        run: |
+          firebase emulators:start --only database &
+          sleep 10  # Wait for emulators to start
+
       - name: Build with Gradle
         run: ./gradlew build
 
       - name: Run Unit Tests
         run: ./gradlew testDebugUnitTest
 
+      - name: Run Instrumented Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedAndroidTest
+
       - name: Upload Test Reports
         uses: actions/upload-artifact@v3.1.3
         with:
           name: test-results
-          path: app/build/reports/tests/testDebugUnitTest/
-
-      - name: Build debug APK and test APK
-        run: ./gradlew assembleDebug assembleDebugAndroidTest
-
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
-
-      - name: Use gcloud CLI
-        run: gcloud info
-
-      - name: Run Instrumentation Tests in Firebase Test Lab
-        run: |
-          gcloud firebase test android run \
-            --type instrumentation \
-            --app app/build/outputs/apk/debug/app-debug.apk \
-            --test app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk \
-            --device model=Pixel2,version=29,locale=en,orientation=portrait \
-            --timeout 5m
+          path: |
+            app/build/reports/tests/testDebugUnitTest/
+            app/build/reports/androidTests/connected/
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v3.1.3
         with:
           name: AndroidCICD.apk
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Stop Firebase Emulators
+        if: always()
+        run: firebase emulators:stop

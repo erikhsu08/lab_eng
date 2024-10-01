@@ -21,6 +21,7 @@ public class FireBaseDatabaseTest {
 
     @Before
     public void setUp() {
+        FirebaseDatabase.getInstance().useEmulator("10.0.2.2", 9000);
         // Inicializa o Firebase no contexto de teste
         FirebaseApp.initializeApp(InstrumentationRegistry.getInstrumentation().getTargetContext());
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
