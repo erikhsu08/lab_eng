@@ -38,6 +38,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.recyclerview)
     testImplementation(libs.junit)
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.ext.junit)
@@ -46,6 +47,7 @@ dependencies {
 
     // Dependência do Firebase Realtime Database
     implementation (libs.firebase.database)
+    testImplementation (libs.firebase.database.v2005)
 
     // Dependências para testes instrumentados com Espresso
     androidTestImplementation(libs.espresso.core.v340)

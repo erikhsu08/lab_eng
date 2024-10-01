@@ -1,14 +1,11 @@
 package com.reciclamais.activity;
 
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.core.content.ContextCompat;
@@ -21,8 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.reciclamais.R;
 import com.reciclamais.adapter.ProdutoAdapter;
 import com.reciclamais.model.Produto;
-import com.reciclamais.activity.HomeFragment; // Importe o HomeFragment
-import com.reciclamais.activity.PublicarFragment; // Importe o PublicarFragment
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,36 +57,6 @@ public class MainActivity extends AppCompatActivity {
         add_produto.setOnClickListener(view -> {
             adicionarProdutoAoFirebase();
         });
-
-        // Define o fragmento padrão
-        if (savedInstanceState == null) {
-            loadFragment(new HomeFragment()); // Fragment inicial
-        }
-
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            Fragment selectedFragment = null;
-            int itemId = item.getItemId();
-
-            if (itemId == R.id.home) {
-                selectedFragment = new HomeFragment();
-            } else if (itemId == R.id.publicar) {
-                selectedFragment = new PublicarFragment();
-            }
-            // Adicione outros casos para os demais itens do menu
-
-            return loadFragment(selectedFragment);
-        });
-    } // OnCreate
-
-    private boolean loadFragment(Fragment fragment) {
-        // Troca o fragmento
-        if (fragment != null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .commit();
-            return true;
-        }
-        return false;
     }
 
     // Método para adicionar um produto ao Firebase
