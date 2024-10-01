@@ -116,6 +116,31 @@ public class MainActivity extends AppCompatActivity {
         Produto p = new Produto("Flor de papel", "Nível: fácil", R.drawable.flor);
         this.produtos.add(p);
 
-        // Adicione mais produtos aqui, conforme necessário
+        p = new Produto("Flor de papel", "Nível: fácil", R.drawable.flor);
+        this.produtos.add(p);
+
+        p = new Produto("Flor de papel", "Nível: fácil", R.drawable.flor);
+        this.produtos.add(p);
+
+        p = new Produto("Flor de papel", "Nível: fácil", R.drawable.flor);
+        this.produtos.add(p);
+
+        p = new Produto("Flor de papel", "Nível: fácil", R.drawable.flor);
+        this.produtos.add(p);
+
+        p = new Produto("Flor de papel", "Nível: fácil", R.drawable.flor);
+        this.produtos.add(p);
+
+        p = new Produto("Flor de papel", "Nível: fácil", R.drawable.flor);
+        this.produtos.add(p);
+
+        p = new Produto("Flor de papel", "Nível: fácil", R.drawable.flor);
+        this.produtos.add(p);
+
+        p = new Produto("Flor de papel", "Nível: fácil", R.drawable.flor);
+        this.produtos.add(p);
+
+        p = new Produto("Flor de papel", "Nível: fácil", R.drawable.flor);
+        this.produtos.add(p);
     }
 }
