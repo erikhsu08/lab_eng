@@ -35,7 +35,7 @@ jobs:
 
       # Run Unit Tests
       - name: Run Unit Tests
-        run: ./gradlew test  # Adicione esta linha para rodar os testes
+        run: ./gradlew test --info # Adicione esta linha para rodar os testes
 
       # Upload APK artifact
       - name: Upload a Build Artifact
