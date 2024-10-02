@@ -59,6 +59,7 @@ dependencies {
 
     // Outras dependências de testes
     testImplementation (libs.junit)
+    testImplementation ("junit:junit:4.13.2")
 
 
     // Import the Firebase BoM
