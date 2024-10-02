@@ -9,7 +9,7 @@ public class ProdutoTest {
 
     @Test
     public void testProdutoCreation() {
-        Produto produto = new Produto("teste", "Nível: dificil", R.drawable.foguete);
+        Produto produto = new Produto("Foguete", "Nível: dificil", R.drawable.foguete);
         assertEquals("Foguete", produto.getNome());
         assertEquals("Nível: dificil", produto.getNivel());
         assertEquals(R.drawable.foguete, produto.getImagem());
