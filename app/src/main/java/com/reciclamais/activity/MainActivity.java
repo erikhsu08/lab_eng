@@ -12,9 +12,6 @@
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
     import com.google.android.material.bottomnavigation.BottomNavigationView;
-    import com.google.firebase.FirebaseApp;
-    import com.google.firebase.database.DatabaseReference;
-    import com.google.firebase.database.FirebaseDatabase;
     import com.reciclamais.R;
     import com.reciclamais.adapter.ProdutoAdapter;
     import com.reciclamais.model.Produto;
@@ -33,9 +30,6 @@
             super.onCreate(savedInstanceState);
             EdgeToEdge.enable(this);
             setContentView(R.layout.activity_main);
-
-            // Inicializa o Firebase
-            FirebaseApp.initializeApp(this);
 
             recyclerProdutos = findViewById(R.id.recyclerProdutos);
             add_produto = findViewById(R.id.add_produto);
