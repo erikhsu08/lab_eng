@@ -20,7 +20,10 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
-          distribution: 'temurin'  # Adicione esta linha
+          distribution: 'temurin'
+
+      - name: Give execute permission to gradlew
+        run: chmod +x gradlew
 
       - name: Build the Project
         run: ./gradlew assembleDebug
