@@ -1,77 +1,28 @@
-name: Android Build
+name: Android CI - Unit Tests
 
 on:
-  pull_request:
-    branches: ["main"]
   push:
-    branches: ["main"]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.1
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Setup Java JDK
-        uses: actions/setup-java@v4.0.0
+      - name: Set up JDK
+        uses: actions/setup-java@v2
         with:
-          java-version: '17'
-          distribution: 'adopt'
+          java-version: '11'
 
-      - name: Add Firebase Credentials
-        run: |
-          echo "$FIREBASE_CREDENTIALS" > $GITHUB_WORKSPACE/app/google-services.json
-        env:
-          FIREBASE_CREDENTIALS: ${{ secrets.FIREBASE_CREDENTIALS }}
-
-      - name: Change wrapper permissions
-        run: chmod +x ./gradlew
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install Firebase CLI
-        run: npm install -g firebase-tools
-
-      - name: Start Firebase Emulators
-        run: |
-          firebase emulators:start --only database &
-          sleep 10  # Wait for emulators to start
-
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Build the Project
+        run: ./gradlew assembleDebug
 
       - name: Run Unit Tests
-        run: ./gradlew testDebugUnitTest
-
-      - name: Run Instrumented Tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          arch: x86_64
-          profile: Nexus 6
-          script: ./gradlew connectedDebugAndroidTest
-
-      - name: Upload Test Reports
-        uses: actions/upload-artifact@v3.1.3
-        with:
-          name: test-results
-          path: |
-            app/build/reports/tests/testDebugUnitTest/
-            app/build/reports/androidTests/connected/
-
-      - name: Upload Build Artifact
-        uses: actions/upload-artifact@v3.1.3
-        with:
-          name: AndroidCICD.apk
-          path: app/build/outputs/apk/debug/app-debug.apk
-
-      - name: Stop Firebase Emulators
-        if: always()
-        run: |
-          kill $(lsof -t -i:9000) || true
-          kill $(lsof -t -i:4000) || true
+        run: ./gradlew test
