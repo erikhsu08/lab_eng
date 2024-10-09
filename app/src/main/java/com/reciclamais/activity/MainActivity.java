@@ -89,7 +89,7 @@
 
             materiais1 = List.of("Rolhas de vinho", "cola quente", "pinos ou ganchos", "Base de Papelão ou Madeira");
 
-            tags1 = List.of("cortiça", "rolhas", "organização", "acessórios");
+            tags1 = List.of("Cortiça", "Rolhas", "Organização", "Acessórios");
 
             p = new Produto("Porta-joias com Rolhas de Vinho", "Nível: Médio", R.drawable.portajoias, passos1, materiais1, tags1);
             this.produtos.add(p);
@@ -98,9 +98,9 @@
             passos1 = List.of("Corte as seções individuais da caixa de ovos para formar pequenos “cálices”.", "Pinte cada uma das peças com tinta acrílica ou spray para um efeito colorido.", "Cole as peças ao redor de uma estrutura de arame ou diretamente sobre uma lâmpada LED de baixa potência.",
                     "Conecte o abajur a uma base de iluminação e ligue para testar o efeito.");
 
-            materiais1 = List.of("Caixa de ovos", "cola quente", "lâmpada LED", "tinta acrílica", "estrutura de arame.");
+            materiais1 = List.of("Caixa de ovos", "Cola quente", "Lâmpada LED", "Tinta acrílica", "Estrutura de arame.");
 
-            tags1 = List.of("papelão", "caixa de ovos", "iluminação", "decoração");
+            tags1 = List.of("Papelão", "Caixa de ovos", "Iluminação", "Decoração");
 
             p = new Produto("Abajur com Caixa de Ovos", "Nível: Difícil", R.drawable.abajur, passos1, materiais1, tags1);
             this.produtos.add(p);
