@@ -1,0 +1,81 @@
+<!-- activity_produto_detalhado.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/produtoImagem"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/produtoNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:paddingTop="16dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/produtoDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:paddingTop="8dp" />
+
+    <!-- Título para Passo a Passo -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Passo a Passo"
+        android:textSize="18sp"
+        android:paddingTop="16dp"
+        android:textStyle="bold" />
+
+    <!-- Lista de Passos -->
+    <LinearLayout
+        android:id="@+id/layoutPassos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="8dp" />
+
+    <!-- Título para Materiais -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Materiais Necessários"
+        android:textSize="18sp"
+        android:paddingTop="16dp"
+        android:textStyle="bold" />
+
+    <!-- Lista de Materiais -->
+    <LinearLayout
+        android:id="@+id/layoutMateriais"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="8dp" />
+
+    <!-- Título para Tags -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tags"
+        android:textSize="18sp"
+        android:paddingTop="16dp"
+        android:textStyle="bold" />
+
+    <!-- Lista de Tags -->
+    <LinearLayout
+        android:id="@+id/layoutTags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="8dp" />
+
+</LinearLayout>
