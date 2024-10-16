@@ -23,9 +23,10 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
     private Context context;
 
     public ProdutoAdapter(List<Produto> listaProdutos, Context context) {
-        this.produtos = listaProdutos;
+        this.produtos = (listaProdutos != null) ? listaProdutos : new ArrayList<>();
         this.context = context;
     }
+
 
     @NonNull
     @Override

@@ -46,6 +46,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
 
+    implementation (libs.firebase.database)
 
     androidTestImplementation (libs.junit.v113)
 
