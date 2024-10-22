@@ -20,13 +20,34 @@ import java.util.List;
 
 public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHolder> {
     private List<Produto> produtos;
+    private List<Produto> produtosFiltrados;
     private Context context;
 
     public ProdutoAdapter(List<Produto> listaProdutos, Context context) {
         this.produtos = (listaProdutos != null) ? listaProdutos : new ArrayList<>();
+        this.produtosFiltrados = new ArrayList<>(this.produtos);
         this.context = context;
     }
 
+    public void filtrarPorTag(String tag) {
+        produtosFiltrados.clear();
+        if (tag.equals("tudo")) {
+            produtosFiltrados.addAll(produtos);
+        } else {
+            for (Produto produto : produtos) {
+                if (produto.getTags() != null && produto.getTags().contains(tag.toLowerCase())) {
+                    produtosFiltrados.add(produto);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public void atualizarLista(List<Produto> novosProdutos) {
+        this.produtos = novosProdutos;
+        this.produtosFiltrados = new ArrayList<>(this.produtos);
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
@@ -37,12 +58,11 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ProdutoAdapter.MyViewHolder holder, int position) {
-        Produto produto = produtos.get(position);
+        Produto produto = produtosFiltrados.get(position);
         holder.textNome.setText(produto.getNome());
         holder.textNivel.setText(produto.getNivel());
         holder.imagemProduto.setImageResource(produto.getImagem());
 
-        // Adiciona o OnClickListener para abrir a tela de detalhes do produto
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProdutoDetalhadoActivity.class);
             intent.putExtra("nome", produto.getNome());
@@ -57,7 +77,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return produtos.size();
+        return produtosFiltrados.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {

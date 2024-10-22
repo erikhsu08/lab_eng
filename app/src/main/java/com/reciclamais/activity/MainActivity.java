@@ -16,6 +16,8 @@ import com.reciclamais.R;
 import com.reciclamais.adapter.ProdutoAdapter;
 import com.reciclamais.model.Produto;
 
+import android.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerProdutos;
     private List<Produto> produtos = new ArrayList<>();
     private BottomNavigationView bottomNavigationView;
+    private ProdutoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +51,31 @@ public class MainActivity extends AppCompatActivity {
         recyclerProdutos.setLayoutManager(layoutManager);
 
         // Define adapter
-        this.prepararProdutos();
-        ProdutoAdapter adapter = new ProdutoAdapter(produtos, this);
+        adapter = new ProdutoAdapter(produtos, this);
         recyclerProdutos.setAdapter(adapter);
 
+        this.prepararProdutos();
+    }
 
+    // Métodos de filtro
+    public void filtrarTudo(View view) {
+        adapter.filtrarPorTag("tudo");
+    }
+
+    public void filtrarPapel(View view) {
+        adapter.filtrarPorTag("papel");
+    }
+
+    public void filtrarPlastico(View view) {
+        adapter.filtrarPorTag("plastico");
+    }
+
+    public void filtrarVidro(View view) {
+        adapter.filtrarPorTag("vidro");
+    }
+
+    public void filtrarMetal(View view) {
+        adapter.filtrarPorTag("metal");
     }
 
     public void prepararProdutos() {
@@ -61,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                produtos.clear(); // Limpa a lista de produtos antes de adicionar os novos dados
+                produtos.clear();
                 for (DataSnapshot produtoSnapshot : dataSnapshot.getChildren()) {
                     String nome = produtoSnapshot.child("nome").getValue(String.class);
                     String nivel = produtoSnapshot.child("nivel").getValue(String.class);
@@ -82,15 +105,13 @@ public class MainActivity extends AppCompatActivity {
                         tags.add(tagSnapshot.getValue(String.class));
                     }
 
-                    // Convertendo o nome da imagem para o ID do recurso drawable
                     int imagemId = getResources().getIdentifier(imagem, "drawable", getPackageName());
 
                     Produto produto = new Produto(nome, nivel, imagemId, passos, materiais, tags);
                     produtos.add(produto);
                 }
 
-                // Notificar o adapter sobre a mudança nos dados
-                recyclerProdutos.getAdapter().notifyDataSetChanged();
+                adapter.atualizarLista(produtos);
             }
 
             @Override
@@ -99,5 +120,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }
