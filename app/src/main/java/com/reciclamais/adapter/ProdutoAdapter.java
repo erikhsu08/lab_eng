@@ -16,6 +16,8 @@ import com.reciclamais.activity.ProdutoDetalhadoActivity;
 import com.reciclamais.model.Produto;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHolder> {
@@ -41,6 +43,34 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
             }
         }
         notifyDataSetChanged();
+    }
+
+    public void ordenaPorDificul(){
+        // Define a ordem de dificuldade
+        Comparator<Produto> comparator = new Comparator<Produto>() {
+            @Override
+            public int compare(Produto p1, Produto p2) {
+                return getDificuldadeValue(p1.getNivel()) - getDificuldadeValue(p2.getNivel());
+            }
+        };
+
+        // Ordena a lista de produtos filtrados
+        Collections.sort(produtosFiltrados, comparator);
+        notifyDataSetChanged();
+
+    }
+
+    private int getDificuldadeValue(String nivel) {
+        switch (nivel.toLowerCase()) {
+            case "fácil":
+                return 1;
+            case "médio":
+                return 2;
+            case "difícil":
+                return 3;
+            default:
+                return 0; // Caso não haja um nível definido, coloque no final
+        }
     }
 
     public void atualizarLista(List<Produto> novosProdutos) {

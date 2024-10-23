@@ -78,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.filtrarPorTag("metal");
     }
 
+    //Metodos de ordenacao
+    public void ordenaDificuldade(View view){
+        adapter.ordenaPorDificul();
+    }
     public void prepararProdutos() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("produtos");
 
