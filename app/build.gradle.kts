@@ -53,4 +53,9 @@ dependencies {
     // Outras dependências de testes
     testImplementation (libs.junit)
 
+    // Dependencia para pegar imagem por URL
+    implementation (libs.glide)
+    annotationProcessor (libs.compiler)
+
+
 }

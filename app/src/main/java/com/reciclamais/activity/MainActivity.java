@@ -109,9 +109,7 @@ public class MainActivity extends AppCompatActivity {
                         tags.add(tagSnapshot.getValue(String.class));
                     }
 
-                    int imagemId = getResources().getIdentifier(imagem, "drawable", getPackageName());
-
-                    Produto produto = new Produto(nome, nivel, imagemId, passos, materiais, tags);
+                    Produto produto = new Produto(nome, nivel, imagem, passos, materiais, tags);
                     produtos.add(produto);
                 }
 

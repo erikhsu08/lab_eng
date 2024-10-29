@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Produto {
     private String nome, nivel;
-    private int imagem;
+    private String imagem;
     private List<String> passos, materiais, tags;
 
 
@@ -12,7 +12,7 @@ public class Produto {
 
     }
 
-    public Produto(String nome, String dificuldade, int imagem, List<String> passos, List<String> materiais, List<String> tags) {
+    public Produto(String nome, String dificuldade, String imagem, List<String> passos, List<String> materiais, List<String> tags) {
         this.nome = nome;
         this.nivel = dificuldade;
         this.imagem = imagem;
@@ -29,11 +29,11 @@ public class Produto {
         this.nivel = nivel;
     }
 
-    public int getImagem() {
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImagem(int imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 

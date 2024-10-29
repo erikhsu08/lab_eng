@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.reciclamais.R;
 import com.reciclamais.activity.ProdutoDetalhadoActivity;
 import com.reciclamais.model.Produto;
@@ -91,7 +92,13 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         Produto produto = produtosFiltrados.get(position);
         holder.textNome.setText(produto.getNome());
         holder.textNivel.setText(produto.getNivel());
-        holder.imagemProduto.setImageResource(produto.getImagem());
+
+        // Carregar a imagem com Glide a partir da URL
+        Glide.with(context)
+                .load(produto.getImagem())
+                .placeholder(R.drawable.loading) // Imagem de placeholder enquanto carrega
+                .error(R.drawable.error_image) // Imagem de erro caso falhe o carregamento
+                .into(holder.imagemProduto);
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProdutoDetalhadoActivity.class);

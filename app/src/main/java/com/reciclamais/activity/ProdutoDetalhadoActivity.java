@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.reciclamais.R;
 
 import java.util.ArrayList;
@@ -34,7 +35,13 @@ public class ProdutoDetalhadoActivity extends AppCompatActivity {
         if (extras != null) {
             produtoNome.setText(extras.getString("nome"));
             produtoNivel.setText(extras.getString("nivel"));
-            produtoImagem.setImageResource(extras.getInt("imagem"));
+
+            // Carrega a imagem com Glide e aplica o placeholder
+            String imagemResource = extras.getString("imagem");
+            Glide.with(this)
+                    .load(imagemResource)
+                    .placeholder(R.drawable.loading) // substitua pelo ID do placeholder
+                    .into(produtoImagem);
 
             ArrayList<String> passos = extras.getStringArrayList("passos");
             ArrayList<String> materiais = extras.getStringArrayList("materiais");
