@@ -47,6 +47,9 @@ public class SearchFragment extends Fragment {
         adapter = new ProdutoAdapter(produtoList, getContext());
         recyclerProdutos.setAdapter(adapter);
 
+        // Configurar click do botão de ordenação
+        view.findViewById(R.id.button3).setOnClickListener(v -> ordenaDificuldade());
+
         // Inicializa o SearchView e define o listener
         searchView = view.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -88,6 +91,11 @@ public class SearchFragment extends Fragment {
                 Log.e("Firebase", "Erro na consulta: " + databaseError.getMessage());
             }
         });
+    }
+
+    //Metodos de ordenacao
+    public void ordenaDificuldade(){
+        adapter.ordenaPorDificul();
     }
 
 }
