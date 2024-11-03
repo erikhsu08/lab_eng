@@ -128,4 +128,19 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
             imagemProduto = itemView.findViewById(R.id.imageProduto);
         }
     }
+
+    public void filtrarPorNome(String texto) {
+        produtosFiltrados.clear();
+        if (texto.isEmpty()) {
+            produtosFiltrados.addAll(produtos);
+        } else {
+            String textoLowerCase = texto.toLowerCase();
+            for (Produto produto : produtos) {
+                if (produto.getNome().toLowerCase().contains(textoLowerCase)) {
+                    produtosFiltrados.add(produto);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
 }
