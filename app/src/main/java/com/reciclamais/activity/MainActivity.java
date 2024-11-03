@@ -9,11 +9,14 @@ import android.util.Log;
 import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.reciclamais.R;
 import com.reciclamais.adapter.ProdutoAdapter;
+import com.reciclamais.databinding.ActivityMainBinding;
 import com.reciclamais.model.Produto;
 
 import android.view.View;
@@ -29,97 +32,45 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView recyclerProdutos;
-    private List<Produto> produtos = new ArrayList<>();
-    private BottomNavigationView bottomNavigationView;
-    private ProdutoAdapter adapter;
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
 
-        recyclerProdutos = findViewById(R.id.recyclerProdutos);
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         // Configurar cor statusbar
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.cinza));
 
-        // Definir layout
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerProdutos.setLayoutManager(layoutManager);
+        // Iniciar com o HomeFragment
+        replaceFragment(new HomeFragment());
 
-        // Define adapter
-        adapter = new ProdutoAdapter(produtos, this);
-        recyclerProdutos.setAdapter(adapter);
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
 
-        this.prepararProdutos();
-    }
-
-    // Métodos de filtro
-    public void filtrarTudo(View view) {
-        adapter.filtrarPorTag("tudo");
-    }
-
-    public void filtrarPapel(View view) {
-        adapter.filtrarPorTag("papel");
-    }
-
-    public void filtrarPlastico(View view) {
-        adapter.filtrarPorTag("plastico");
-    }
-
-    public void filtrarVidro(View view) {
-        adapter.filtrarPorTag("vidro");
-    }
-
-    public void filtrarMetal(View view) {
-        adapter.filtrarPorTag("metal");
-    }
-
-    //Metodos de ordenacao
-    public void ordenaDificuldade(View view){
-        adapter.ordenaPorDificul();
-    }
-    public void prepararProdutos() {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("produtos");
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                produtos.clear();
-                for (DataSnapshot produtoSnapshot : dataSnapshot.getChildren()) {
-                    String nome = produtoSnapshot.child("nome").getValue(String.class);
-                    String nivel = produtoSnapshot.child("nivel").getValue(String.class);
-                    String imagem = produtoSnapshot.child("imagem").getValue(String.class);
-
-                    List<String> passos = new ArrayList<>();
-                    for (DataSnapshot passoSnapshot : produtoSnapshot.child("passos").getChildren()) {
-                        passos.add(passoSnapshot.getValue(String.class));
-                    }
-
-                    List<String> materiais = new ArrayList<>();
-                    for (DataSnapshot materialSnapshot : produtoSnapshot.child("materiais").getChildren()) {
-                        materiais.add(materialSnapshot.getValue(String.class));
-                    }
-
-                    List<String> tags = new ArrayList<>();
-                    for (DataSnapshot tagSnapshot : produtoSnapshot.child("tags").getChildren()) {
-                        tags.add(tagSnapshot.getValue(String.class));
-                    }
-
-                    Produto produto = new Produto(nome, nivel, imagem, passos, materiais, tags);
-                    produtos.add(produto);
-                }
-
-                adapter.atualizarLista(produtos);
+            if (id == R.id.home) {
+                replaceFragment(new HomeFragment());
+            } else if (id == R.id.search) {
+                replaceFragment(new SearchFragment());
+            } else if (id == R.id.publicar) {
+                replaceFragment(new PublishFragment());
+            } else if (id == R.id.salvos) {
+                replaceFragment(new SavedFragment());
+            } else if (id == R.id.profile) {
+                replaceFragment(new ProfileFragment());
             }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.e("Firebase", "Erro ao carregar dados", databaseError.toException());
-            }
+            return true;
         });
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.commit();
     }
 }

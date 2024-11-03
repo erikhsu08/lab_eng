@@ -16,10 +16,10 @@ public class ProdutoTest {
 
     @Test
     public void testProdutoCreation() {
-        Produto produto = new Produto("Teste", "Nível: dificil", R.drawable.foguete, passos1, materiais1, tags1);
+        Produto produto = new Produto("Teste", "Nível: dificil", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5dV05o95PP7ldtCqyU5p5P6LV1N4cCv9DAaVEf5NWiG_dRjG9", passos1, materiais1, tags1);
         assertEquals("Teste", produto.getNome());
         assertEquals("Nível: dificil", produto.getNivel());
-        assertEquals(R.drawable.foguete, produto.getImagem());
+        assertEquals("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5dV05o95PP7ldtCqyU5p5P6LV1N4cCv9DAaVEf5NWiG_dRjG9", produto.getImagem());
         assertEquals(passos1, produto.getPassos());
         assertEquals(materiais1, produto.getMateriais());
         assertEquals(tags1, produto.getTags());
