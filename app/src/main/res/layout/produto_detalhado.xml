@@ -1,81 +1,132 @@
 <!-- activity_produto_detalhado.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/produtoImagem"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop" />
-
-    <TextView
-        android:id="@+id/produtoNome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:paddingTop="16dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/produtoDescricao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:paddingTop="8dp" />
-
-    <!-- Título para Passo a Passo -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Passo a Passo"
-        android:textSize="18sp"
-        android:paddingTop="16dp"
-        android:textStyle="bold" />
-
-    <!-- Lista de Passos -->
     <LinearLayout
-        android:id="@+id/layoutPassos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="8dp" />
+        android:background="@color/white"
+        android:padding="16dp">
 
-    <!-- Título para Materiais -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Materiais Necessários"
-        android:textSize="18sp"
-        android:paddingTop="16dp"
-        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/produtoImagem"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop" />
 
-    <!-- Lista de Materiais -->
-    <LinearLayout
-        android:id="@+id/layoutMateriais"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="8dp" />
+        <TextView
+            android:id="@+id/produtoNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/principal"
+            android:paddingTop="16dp"
+            android:fontFamily="@font/poppins_bold" />
 
-    <!-- Título para Tags -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tags"
-        android:textSize="18sp"
-        android:paddingTop="16dp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/produtoDescricao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingTop="8dp" />
 
-    <!-- Lista de Tags -->
-    <LinearLayout
-        android:id="@+id/layoutTags"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="8dp" />
+        <!-- Título para Passo a Passo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passo a Passo"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:paddingTop="16dp"
+            android:fontFamily="@font/poppins_bold" />
 
-</LinearLayout>
+        <!-- Lista de Passos -->
+        <LinearLayout
+            android:id="@+id/layoutPassos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp" />
+
+        <!-- Título para Materiais -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Materiais Necessários"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:paddingTop="16dp"
+            android:fontFamily="@font/poppins_bold" />
+
+        <!-- Lista de Materiais -->
+        <LinearLayout
+            android:id="@+id/layoutMateriais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="8dp" />
+
+        <!-- Título para Tags -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tags"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:paddingTop="16dp"
+            android:fontFamily="@font/poppins_bold" />
+
+        <!-- Lista de Tags -->
+        <LinearLayout
+            android:id="@+id/layoutTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp" />
+
+        <!-- Seção de Avaliações -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deixe sua avaliação"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:paddingTop="16dp"
+            android:fontFamily="@font/poppins_bold" />
+
+        <!-- RatingBar para Avaliação -->
+        <RatingBar
+            android:id="@+id/produtoRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1"
+            android:rating="0"
+            android:isIndicator="false"
+            />
+
+        <!-- Campo de Comentarios -->
+        <TextView
+            android:id="@+id/comentarioTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avaliação de Usuários"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:paddingTop="16dp"
+            android:fontFamily="@font/poppins_bold" />
+
+        <!-- Exemplo de Comentário -->
+        <TextView
+            android:id="@+id/comentarioTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Excelente produto! Achei facil de construir e montar."
+            android:textSize="14sp"
+            android:paddingTop="4dp"
+            android:fontFamily="@font/poppins" />
+
+    </LinearLayout>
+</ScrollView>

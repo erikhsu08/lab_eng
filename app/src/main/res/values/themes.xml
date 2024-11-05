@@ -8,6 +8,7 @@
     <style name="Theme.ReciclaMais" parent="Base.Theme.ReciclaMais">
         <item name="colorPrimary">@color/principal</item>
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="colorAccent">@color/principal</item>
     </style>
 
     <style name="roundedImageView">

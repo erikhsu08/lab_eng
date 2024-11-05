@@ -47,26 +47,35 @@ public class ProdutoDetalhadoActivity extends AppCompatActivity {
             ArrayList<String> materiais = extras.getStringArrayList("materiais");
             ArrayList<String> tags = extras.getStringArrayList("tags");
 
+            // Define uma cor para o texto dos passos, materiais e tags
+            int textColor = getResources().getColor(R.color.black);
+
+
             if (passos != null) {
                 for (int i = 0; i < passos.size(); i++) {
                     TextView textView = new TextView(this);
                     textView.setText((i + 1) + ". " + passos.get(i));
+                    textView.setTextColor(textColor); // Define a cor do texto
                     layoutPassos.addView(textView);
                 }
             }
 
+            // Adiciona os materiais ao layoutMateriais com a cor definida
             if (materiais != null) {
                 for (String material : materiais) {
                     TextView textView = new TextView(this);
                     textView.setText("• " + material);
+                    textView.setTextColor(textColor); // Define a cor do texto
                     layoutMateriais.addView(textView);
                 }
             }
 
+            // Adiciona as tags ao layoutTags com a cor definida
             if (tags != null) {
                 for (String tag : tags) {
                     TextView textView = new TextView(this);
                     textView.setText("#" + tag + " ");
+                    textView.setTextColor(textColor); // Define a cor do texto
                     textView.setPadding(0, 0, 10, 0);  // Adiciona um pequeno espaçamento à direita
                     layoutTags.addView(textView);
                 }
