@@ -86,7 +86,7 @@
             android:orientation="horizontal"
             android:paddingTop="8dp" />
 
-        <!-- Seção de Avaliações -->
+        <!-- Seção de Avaliações Unificada -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,6 +96,14 @@
             android:paddingTop="16dp"
             android:fontFamily="@font/poppins_bold" />
 
+        <!-- Bloco de Avaliação Unificada -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rating_background"
+            android:padding="16dp">
+
         <!-- RatingBar para Avaliação -->
         <RatingBar
             android:id="@+id/produtoRating"
@@ -104,29 +112,52 @@
             android:numStars="5"
             android:stepSize="1"
             android:rating="0"
-            android:isIndicator="false"
+            android:isIndicator="false" />
+
+        <!-- Campo de Comentário -->
+        <EditText
+            android:id="@+id/comentarioInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Escreva seu comentário (opcional)"
+            android:textColorHint="@color/cinza"
+            android:textColor="@color/black"
+            android:inputType="textMultiLine"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
             />
 
-        <!-- Campo de Comentarios -->
-        <TextView
-            android:id="@+id/comentarioTitulo"
+        <!-- Botão de Enviar Avaliação -->
+        <Button
+            android:id="@+id/btnEnviarAvaliacao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Avaliação de Usuários"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:paddingTop="16dp"
-            android:fontFamily="@font/poppins_bold" />
-
-        <!-- Exemplo de Comentário -->
-        <TextView
-            android:id="@+id/comentarioTexto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Excelente produto! Achei facil de construir e montar."
-            android:textSize="14sp"
-            android:paddingTop="4dp"
-            android:fontFamily="@font/poppins" />
-
+            android:layout_gravity="end"
+            android:text="Enviar"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/principal" />
     </LinearLayout>
-</ScrollView>
+
+    <!-- Comentários dos Usuários -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avaliações de Usuários"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:paddingTop="16dp"
+        android:fontFamily="@font/poppins_bold" />
+
+    <!-- Exemplo de Comentário -->
+    <TextView
+        android:id="@+id/comentarioTexto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Excelente produto! Achei fácil de construir e montar."
+        android:textSize="14sp"
+        android:paddingTop="4dp"
+        android:fontFamily="@font/poppins" />
+
+</LinearLayout>
+    </ScrollView>

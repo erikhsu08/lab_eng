@@ -49,13 +49,14 @@ public class ProdutoDetalhadoActivity extends AppCompatActivity {
 
             // Define uma cor para o texto dos passos, materiais e tags
             int textColor = getResources().getColor(R.color.black);
-
+            float textSize = 16f; // Define o tamanho da fonte em sp
 
             if (passos != null) {
                 for (int i = 0; i < passos.size(); i++) {
                     TextView textView = new TextView(this);
                     textView.setText((i + 1) + ". " + passos.get(i));
                     textView.setTextColor(textColor); // Define a cor do texto
+                    textView.setTextSize(textSize); // Define o tamanho do texto
                     layoutPassos.addView(textView);
                 }
             }
@@ -66,6 +67,7 @@ public class ProdutoDetalhadoActivity extends AppCompatActivity {
                     TextView textView = new TextView(this);
                     textView.setText("• " + material);
                     textView.setTextColor(textColor); // Define a cor do texto
+                    textView.setTextSize(textSize); // Define o tamanho do texto
                     layoutMateriais.addView(textView);
                 }
             }
@@ -76,10 +78,13 @@ public class ProdutoDetalhadoActivity extends AppCompatActivity {
                     TextView textView = new TextView(this);
                     textView.setText("#" + tag + " ");
                     textView.setTextColor(textColor); // Define a cor do texto
+                    textView.setTextSize(textSize); // Define o tamanho do texto
                     textView.setPadding(0, 0, 10, 0);  // Adiciona um pequeno espaçamento à direita
                     layoutTags.addView(textView);
                 }
             }
         }
     }
+
+
 }
