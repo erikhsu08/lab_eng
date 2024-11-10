@@ -91,6 +91,7 @@ public class HomeFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 produtos.clear();
                 for (DataSnapshot produtoSnapshot : dataSnapshot.getChildren()) {
+                    String produtoKey = produtoSnapshot.getKey();
                     String nome = produtoSnapshot.child("nome").getValue(String.class);
                     String nivel = produtoSnapshot.child("nivel").getValue(String.class);
                     String imagem = produtoSnapshot.child("imagem").getValue(String.class);
@@ -110,7 +111,7 @@ public class HomeFragment extends Fragment {
                         tags.add(tagSnapshot.getValue(String.class));
                     }
 
-                    Produto produto = new Produto(nome, nivel, imagem, passos, materiais, tags);
+                    Produto produto = new Produto(nome, nivel, produtoKey, imagem, passos, materiais, tags);
                     produtos.add(produto);
                 }
 

@@ -3,7 +3,7 @@ package com.reciclamais.model;
 import java.util.List;
 
 public class Produto {
-    private String nome, nivel;
+    private String nome, nivel, key;
     private String imagem;
     private List<String> passos, materiais, tags;
 
@@ -12,9 +12,10 @@ public class Produto {
 
     }
 
-    public Produto(String nome, String dificuldade, String imagem, List<String> passos, List<String> materiais, List<String> tags) {
+    public Produto(String nome, String dificuldade, String key, String imagem, List<String> passos, List<String> materiais, List<String> tags) {
         this.nome = nome;
         this.nivel = dificuldade;
+        this.key = key;
         this.imagem = imagem;
         this.passos = passos;
         this.materiais = materiais;
@@ -40,6 +41,13 @@ public class Produto {
     public String getNome() {
         return nome;
     }
+
+    public String getKey() { return key; }
+
+    public void setKey(String key){
+        this.key = key;
+    }
+
 
     public void setNome(String nome) {
         this.nome = nome;

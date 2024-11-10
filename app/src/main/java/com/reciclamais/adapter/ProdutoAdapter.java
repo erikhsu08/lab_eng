@@ -102,6 +102,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ProdutoDetalhadoActivity.class);
+            intent.putExtra("produtoKey", produto.getKey()); // Adicione a chave do produto
             intent.putExtra("nome", produto.getNome());
             intent.putExtra("nivel", produto.getNivel());
             intent.putExtra("imagem", produto.getImagem());

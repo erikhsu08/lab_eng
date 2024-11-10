@@ -1,0 +1,83 @@
+<!-- comentario_item.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <!-- Foto do Usuário -->
+    <ImageView
+        android:id="@+id/usuarioFoto"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/user"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/circle_shape" />
+
+    <!-- Detalhes do Comentário -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Nome do Usuário -->
+        <TextView
+            android:id="@+id/usuarioNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do Usuário"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <!-- Comentário do Usuário -->
+        <TextView
+            android:id="@+id/comentarioTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comentário"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black" />
+
+        <!-- Rating -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <!-- Estrela -->
+            <ImageView
+                android:id="@+id/estrelaIcone"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_star"
+                android:layout_gravity="center_vertical" />
+
+            <!-- Quantidade de Estrelas -->
+            <TextView
+                android:id="@+id/quantidadeEstrelas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textSize="14sp"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <!-- Data da Avaliação -->
+        <TextView
+            android:id="@+id/dataAvaliacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data"
+            android:textSize="12sp"
+            android:textColor="@color/cinza"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+</LinearLayout>

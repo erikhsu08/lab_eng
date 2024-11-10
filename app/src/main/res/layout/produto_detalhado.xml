@@ -149,15 +149,11 @@
         android:paddingTop="16dp"
         android:fontFamily="@font/poppins_bold" />
 
-    <!-- Exemplo de Comentário -->
-    <TextView
-        android:id="@+id/comentarioTexto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Excelente produto! Achei fácil de construir e montar."
-        android:textSize="14sp"
-        android:paddingTop="4dp"
-        android:fontFamily="@font/poppins" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerComentarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" />
 
 </LinearLayout>
     </ScrollView>
