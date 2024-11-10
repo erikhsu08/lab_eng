@@ -1,16 +1,13 @@
 package com.reciclamais.activity;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,7 +16,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.reciclamais.R;
 import com.reciclamais.adapter.ProdutoAdapter;
 import com.reciclamais.model.Produto;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +54,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    // Métodos de filtro
+    // Métodos de filtro (mantidos iguais)
     public void filtrarTudo() {
         adapter.filtrarPorTag("tudo");
     }
@@ -83,6 +79,7 @@ public class HomeFragment extends Fragment {
     public void ordenaDificuldade(){
         adapter.ordenaPorDificul();
     }
+
     public void prepararProdutos() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("produtos");
 
@@ -95,6 +92,9 @@ public class HomeFragment extends Fragment {
                     String nome = produtoSnapshot.child("nome").getValue(String.class);
                     String nivel = produtoSnapshot.child("nivel").getValue(String.class);
                     String imagem = produtoSnapshot.child("imagem").getValue(String.class);
+
+                    // Carregar o estado de favorito
+                    Boolean favoritado = produtoSnapshot.child("favoritado").getValue(Boolean.class);
 
                     List<String> passos = new ArrayList<>();
                     for (DataSnapshot passoSnapshot : produtoSnapshot.child("passos").getChildren()) {
@@ -112,6 +112,8 @@ public class HomeFragment extends Fragment {
                     }
 
                     Produto produto = new Produto(nome, nivel, produtoKey, imagem, passos, materiais, tags);
+                    // Definir o estado de favorito do produto
+                    produto.setFavoritado(favoritado != null && favoritado);
                     produtos.add(produto);
                 }
 
@@ -123,5 +125,12 @@ public class HomeFragment extends Fragment {
                 Log.e("Firebase", "Erro ao carregar dados", databaseError.toException());
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Recarrega os produtos quando voltar para o fragment
+        prepararProdutos();
     }
 }

@@ -6,6 +6,7 @@ public class Produto {
     private String nome, nivel, key;
     private String imagem;
     private List<String> passos, materiais, tags;
+    private boolean favoritado;
 
 
     public Produto(){
@@ -76,4 +77,13 @@ public class Produto {
     public void setTags(List<String> tags) {
         this.tags = tags;
     }
+
+    public boolean isFavoritado() {
+        return favoritado;
+    }
+
+    public void setFavoritado(boolean favoritado) {
+        this.favoritado = favoritado;
+    }
+
 }
