@@ -1,17 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".activity.PublishFragment">
+    android:fillViewport="true"
+    android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Publicar"
-        android:textColor="@color/black"
-        android:layout_gravity="center"/>
+        android:padding="16dp">
 
-</FrameLayout>
+        <!-- Título da tela -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Cadastrar Produto Reciclável"
+            android:textSize="24sp"
+            android:textColor="@color/principal"
+            android:fontFamily="@font/poppins_bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Nome do produto (Checkboxes) -->
+        <TextView
+            android:id="@+id/textViewNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do produto"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/nomeCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNome">
+
+            <!-- Campo de Nome -->
+            <EditText
+                android:id="@+id/editTextNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite o nome / titulo do produto"
+                android:inputType="text"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="12dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:textSize="16sp" />
+        </androidx.cardview.widget.CardView>
+
+
+
+        <!-- Tipos de Materiais (Checkboxes) -->
+        <TextView
+            android:id="@+id/textViewTiposMateriais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipos de Materiais"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/nomeCardView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <CheckBox
+            android:id="@+id/checkBoxPapel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins"
+            android:text="Papel / Papelão"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTiposMateriais"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"/>
+
+        <CheckBox
+            android:id="@+id/checkBoxPlastico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins"
+            android:text="Plástico"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxPapel"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <CheckBox
+            android:id="@+id/checkBoxVidro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins"
+            android:text="Vidro"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxPlastico"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <CheckBox
+            android:id="@+id/checkBoxMetal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins"
+            android:text="Metal"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxVidro"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- Nível de Dificuldade (Spinner) -->
+        <TextView
+            android:id="@+id/textViewNivelDificuldade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Nível de Dificuldade"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxMetal"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerNivelDificuldade"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/nivel_dificuldade"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNivelDificuldade"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:popupBackground="@android:color/white" />
+
+
+        <!-- Passo a Passo (Button to add steps) -->
+        <TextView
+            android:id="@+id/textViewPassoAPasso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passo a Passo"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerNivelDificuldade"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextPassos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Digite e clique em adicionar passo"
+            android:inputType="text"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPassoAPasso"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColorHint="@android:color/darker_gray"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/buttonAdicionarPasso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar Passo"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassos"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Container para exibir passos -->
+        <LinearLayout
+            android:id="@+id/containerPassos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/buttonAdicionarPasso"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <!-- Materiais (Button to add materials) -->
+        <TextView
+            android:id="@+id/textViewMateriais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Materiais Necessários"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAdicionarPasso"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextMateriais"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Digite e clique em adicionar material"
+            android:inputType="text"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMateriais"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColorHint="@android:color/darker_gray"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/buttonAdicionarMaterial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar Material"
+            app:layout_constraintTop_toBottomOf="@+id/editTextMateriais"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Container para exibir materiais -->
+        <LinearLayout
+            android:id="@+id/containerMateriais"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/buttonAdicionarMaterial"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+        <!-- Tags (Text field for adding tags) -->
+        <TextView
+            android:id="@+id/textViewTags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Tags"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/buttonAdicionarMaterial"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextTags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Adicionar tags separadas por vírgula"
+            android:inputType="text"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTags"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColorHint="@android:color/darker_gray"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Add URL de imagem -->
+        <TextView
+            android:id="@+id/textViewImagem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Adicione o link de imagem do produto"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTags"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/editTextImagem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Insira o URL aqui"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:textColorHint="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/textViewImagem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"/>
+
+
+
+        <!-- Botão de Publicar -->
+        <Button
+            android:id="@+id/buttonPublicar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Publicar"
+            app:layout_constraintTop_toBottomOf="@+id/editTextImagem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
