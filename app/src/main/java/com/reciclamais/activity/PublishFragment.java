@@ -1,53 +1,54 @@
 package com.reciclamais.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.StorageReference;
 import com.reciclamais.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PublishFragment extends Fragment {
 
-    private LinearLayout containerPassos;
-    private LinearLayout containerMateriais;
-    private Button buttonAdicionarPasso;
-    private Button buttonAdicionarMaterial;
+    private EditText editTextPassos, editTextMateriais;
+    private LinearLayout containerPassos, containerMateriais;
+    private Button buttonAdicionarPasso, buttonAdicionarMaterial;
+    private int passoNumero = 1; // contador para numerar os passos
 
-    private List<String> listaPassos = new ArrayList<>();
-    private List<String> listaMateriais = new ArrayList<>();
+    private FirebaseDatabase database;
+    private DatabaseReference databaseRef;
+    private StorageReference storageRef;
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Infla o layout para este fragmento
-        return inflater.inflate(R.layout.fragment_publish, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_publish, container, false);
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        // Inicializa as Views após o layout ser inflado
+        // Inicialize as Views
+        editTextPassos = view.findViewById(R.id.editTextPassos);
+        editTextMateriais = view.findViewById(R.id.editTextMateriais);
         containerPassos = view.findViewById(R.id.containerPassos);
         containerMateriais = view.findViewById(R.id.containerMateriais);
         buttonAdicionarPasso = view.findViewById(R.id.buttonAdicionarPasso);
         buttonAdicionarMaterial = view.findViewById(R.id.buttonAdicionarMaterial);
 
-        // Configura os listeners dos botões
+        // Configura o botão para adicionar passos
         buttonAdicionarPasso.setOnClickListener(v -> adicionarPasso());
+
+        // Configura o botão para adicionar materiais
         buttonAdicionarMaterial.setOnClickListener(v -> adicionarMaterial());
 
         // Configurando o Spinner com o ArrayAdapter
@@ -62,41 +63,32 @@ public class PublishFragment extends Fragment {
 
         adapter.setDropDownViewResource(R.layout.spinner_item); // Layout para o dropdown também
         spinnerNivelDificuldade.setAdapter(adapter);
+
+        return view;
     }
 
+    // Método para adicionar um novo passo numerado
     private void adicionarPasso() {
-        // Aqui você pode usar um AlertDialog para permitir que o usuário digite o passo
-        String novoPasso = "Passo exemplo"; // Substitua com o valor obtido no diálogo
-        listaPassos.add(novoPasso);
-        atualizarListaPassos();
-    }
-
-    private void adicionarMaterial() {
-        // Aqui você pode usar um AlertDialog para permitir que o usuário digite o material
-        String novoMaterial = "Material exemplo"; // Substitua com o valor obtido no diálogo
-        listaMateriais.add(novoMaterial);
-        atualizarListaMateriais();
-    }
-
-    private void atualizarListaPassos() {
-        containerPassos.removeAllViews();
-        for (String passo : listaPassos) {
-            TextView textView = new TextView(getContext());
-            textView.setText(passo);
-            textView.setPadding(16, 16, 16, 16);
-            textView.setTextColor(getResources().getColor(R.color.black));
-            containerPassos.addView(textView);
+        String passoTexto = editTextPassos.getText().toString();
+        if (!passoTexto.isEmpty()) {
+            TextView textViewPasso = new TextView(getContext());
+            textViewPasso.setText(passoNumero + ". " + passoTexto); // adiciona número do passo
+            textViewPasso.setTextColor(Color.BLACK); // define cor do texto como preto
+            containerPassos.addView(textViewPasso);
+            editTextPassos.setText("");
+            passoNumero++; // incrementa o número do passo para o próximo
         }
     }
 
-    private void atualizarListaMateriais() {
-        containerMateriais.removeAllViews();
-        for (String material : listaMateriais) {
-            TextView textView = new TextView(getContext());
-            textView.setText(material);
-            textView.setPadding(16, 16, 16, 16);
-            textView.setTextColor(getResources().getColor(R.color.black));
-            containerMateriais.addView(textView);
+    // Método para adicionar um novo material com bullet point
+    private void adicionarMaterial() {
+        String materialTexto = editTextMateriais.getText().toString();
+        if (!materialTexto.isEmpty()) {
+            TextView textViewMaterial = new TextView(getContext());
+            textViewMaterial.setText("• " + materialTexto); // adiciona bullet point
+            textViewMaterial.setTextColor(Color.BLACK); // define cor do texto como preto
+            containerMateriais.addView(textViewMaterial);
+            editTextMateriais.setText("");
         }
     }
 }

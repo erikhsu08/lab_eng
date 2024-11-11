@@ -160,6 +160,17 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp"/>
 
+        <!-- Container para exibir passos -->
+        <LinearLayout
+            android:id="@+id/containerPassos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/textViewPassoAPasso"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
         <EditText
             android:id="@+id/editTextPassos"
             android:layout_width="0dp"
@@ -167,7 +178,7 @@
             android:hint="Digite e clique em adicionar passo"
             android:inputType="text"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPassoAPasso"
+            app:layout_constraintTop_toBottomOf="@+id/containerPassos"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColorHint="@android:color/darker_gray"
@@ -182,17 +193,6 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="8dp"/>
 
-        <!-- Container para exibir passos -->
-        <LinearLayout
-            android:id="@+id/containerPassos"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/buttonAdicionarPasso"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp" />
-
         <!-- Materiais (Button to add materials) -->
         <TextView
             android:id="@+id/textViewMateriais"
@@ -206,6 +206,17 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="16dp"/>
 
+        <!-- Container para exibir materiais -->
+        <LinearLayout
+            android:id="@+id/containerMateriais"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/textViewMateriais"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
         <EditText
             android:id="@+id/editTextMateriais"
             android:layout_width="0dp"
@@ -213,7 +224,7 @@
             android:hint="Digite e clique em adicionar material"
             android:inputType="text"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/textViewMateriais"
+            app:layout_constraintTop_toBottomOf="@+id/containerMateriais"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColorHint="@android:color/darker_gray"
@@ -228,16 +239,6 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="8dp"/>
 
-        <!-- Container para exibir materiais -->
-        <LinearLayout
-            android:id="@+id/containerMateriais"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/buttonAdicionarMaterial"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp" />
 
         <!-- Tags (Text field for adding tags) -->
         <TextView
