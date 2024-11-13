@@ -24,7 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.reciclamais.R;
 import com.reciclamais.adapter.ComentarioAdapter;
 import com.reciclamais.model.Avaliacao;
-import com.reciclamais.model.Comentario;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -158,10 +157,10 @@ public class ProdutoDetalhadoActivity extends AppCompatActivity {
         avaliacoesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<Comentario> comentarios = new ArrayList<>();
+                List<Avaliacao> comentarios = new ArrayList<>();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Comentario comentario = snapshot.getValue(Comentario.class);
+                    Avaliacao comentario = snapshot.getValue(Avaliacao.class);
                     if (comentario != null) {
                         comentarios.add(comentario);
                     }

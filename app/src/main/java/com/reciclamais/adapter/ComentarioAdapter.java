@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.reciclamais.R;
-import com.reciclamais.model.Comentario;
+import com.reciclamais.model.Avaliacao;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,9 +20,10 @@ import java.util.List;
 import java.util.Locale;
 
 public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.ComentarioViewHolder> {
-    private List<Comentario> comentarios;
+    private List<Avaliacao> comentarios;
     private Context context;
     private SimpleDateFormat dateFormat;
+
 
     public ComentarioAdapter(Context context) {
         this.context = context;
@@ -39,7 +40,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
 
     @Override
     public void onBindViewHolder(@NonNull ComentarioViewHolder holder, int position) {
-        Comentario comentario = comentarios.get(position);
+        Avaliacao comentario = comentarios.get(position);
 
         // Set rating
         holder.quantidadeEstrelas.setText(String.valueOf((int)comentario.getRating()));
@@ -52,7 +53,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
         holder.dataAvaliacao.setText(dataFormatada);
 
         // For now, we'll use a default user name since we don't have user information
-        holder.usuarioNome.setText("Usuário Anônimo");
+        holder.usuarioNome.setText("João Silva");
     }
 
     @Override
@@ -60,7 +61,7 @@ public class ComentarioAdapter extends RecyclerView.Adapter<ComentarioAdapter.Co
         return comentarios.size();
     }
 
-    public void atualizarComentarios(List<Comentario> novosComentarios) {
+    public void atualizarComentarios(List<Avaliacao> novosComentarios) {
         this.comentarios.clear();
         this.comentarios.addAll(novosComentarios);
         notifyDataSetChanged();

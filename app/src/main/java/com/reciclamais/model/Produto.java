@@ -8,6 +8,12 @@ public class Produto {
     private List<String> passos, materiais, tags;
     private boolean favoritado;
 
+    // Novos campos
+    private String autorId;
+    private String autorNome;
+    private float media_avaliacoes;
+    private int total_avaliacoes;
+
 
     public Produto(){
 
@@ -84,6 +90,39 @@ public class Produto {
 
     public void setFavoritado(boolean favoritado) {
         this.favoritado = favoritado;
+    }
+
+    // Novos getters e setters
+    public String getAutorId() {
+        return autorId;
+    }
+
+    public void setAutorId(String autorId) {
+        this.autorId = autorId;
+    }
+
+    public String getAutorNome() {
+        return autorNome;
+    }
+
+    public void setAutorNome(String autorNome) {
+        this.autorNome = autorNome;
+    }
+
+    public float getMedia_avaliacoes() {
+        return media_avaliacoes;
+    }
+
+    public void setMedia_avaliacoes(float media_avaliacoes) {
+        this.media_avaliacoes = media_avaliacoes;
+    }
+
+    public int getTotal_avaliacoes() {
+        return total_avaliacoes;
+    }
+
+    public void setTotal_avaliacoes(int total_avaliacoes) {
+        this.total_avaliacoes = total_avaliacoes;
     }
 
 }
