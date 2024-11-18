@@ -49,6 +49,8 @@ public class SearchFragment extends Fragment {
 
         // Configurar click do botão de ordenação
         view.findViewById(R.id.button3).setOnClickListener(v -> ordenaDificuldade());
+        view.findViewById(R.id.button4).setOnClickListener(v -> ordenaAvaliacoes());
+
 
         // Inicializa o SearchView e define o listener
         searchView = view.findViewById(R.id.searchView);
@@ -97,5 +99,6 @@ public class SearchFragment extends Fragment {
     public void ordenaDificuldade(){
         adapter.ordenaPorDificul();
     }
+    public void ordenaAvaliacoes(){ adapter.ordenaPorMediaAvaliacoes();}
 
 }

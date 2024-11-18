@@ -66,6 +66,16 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
 
     }
 
+    public void ordenaPorMediaAvaliacoes() {
+        Collections.sort(produtosFiltrados, (p1, p2) -> {
+            double media1 = p1.getMedia_avaliacoes();
+            double media2 = p2.getMedia_avaliacoes();
+            return Double.compare(media2, media1); // Ordenação decrescente
+        });
+        notifyDataSetChanged();
+    }
+
+
     private int getDificuldadeValue(String nivel) {
         switch (nivel.toLowerCase()) {
             case "fácil":

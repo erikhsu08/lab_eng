@@ -11,7 +11,7 @@ public class Produto {
     // Novos campos
     private String autorId;
     private String autorNome;
-    private float media_avaliacoes;
+    private double media_avaliacoes;
     private int total_avaliacoes;
 
 
@@ -109,11 +109,11 @@ public class Produto {
         this.autorNome = autorNome;
     }
 
-    public float getMedia_avaliacoes() {
+    public double getMedia_avaliacoes() {
         return media_avaliacoes;
     }
 
-    public void setMedia_avaliacoes(float media_avaliacoes) {
+    public void setMedia_avaliacoes(double media_avaliacoes) {
         this.media_avaliacoes = media_avaliacoes;
     }
 

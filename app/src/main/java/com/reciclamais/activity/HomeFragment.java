@@ -46,8 +46,11 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.vidro_png).setOnClickListener(v -> filtrarVidro());
         view.findViewById(R.id.metal_png).setOnClickListener(v -> filtrarMetal());
 
+
         // Configurar click do botão de ordenação
         view.findViewById(R.id.button3).setOnClickListener(v -> ordenaDificuldade());
+        view.findViewById(R.id.button4).setOnClickListener(v -> ordenaAvaliacoes());
+
 
         prepararProdutos();
 
@@ -79,6 +82,7 @@ public class HomeFragment extends Fragment {
     public void ordenaDificuldade(){
         adapter.ordenaPorDificul();
     }
+    public void ordenaAvaliacoes(){ adapter.ordenaPorMediaAvaliacoes(); }
 
     public void prepararProdutos() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("produtos");
@@ -92,6 +96,8 @@ public class HomeFragment extends Fragment {
                     String nome = produtoSnapshot.child("nome").getValue(String.class);
                     String nivel = produtoSnapshot.child("nivel").getValue(String.class);
                     String imagem = produtoSnapshot.child("imagem").getValue(String.class);
+                    double mediaAvaliacoes = produtoSnapshot.child("media_avaliacoes").getValue(Double.class);
+
 
                     // Carregar o estado de favorito
                     Boolean favoritado = produtoSnapshot.child("favoritado").getValue(Boolean.class);
@@ -114,7 +120,9 @@ public class HomeFragment extends Fragment {
                     Produto produto = new Produto(nome, nivel, produtoKey, imagem, passos, materiais, tags);
                     // Definir o estado de favorito do produto
                     produto.setFavoritado(favoritado != null && favoritado);
+                    produto.setMedia_avaliacoes(mediaAvaliacoes);
                     produtos.add(produto);
+
                 }
 
                 adapter.atualizarLista(produtos);
